@@ -64,7 +64,7 @@ export const BOXES: Box[] = [
     name: 'Midnight',
     tagline: 'Deep blue, one in ten hits steel.',
     priceCents: dollars(899),
-    theme: { body: '#1b2440', seam: '#d9b26b', accent: '#5b7cff', backdrop: '#070a17' },
+    theme: { body: '#22335f', seam: '#d9b26b', accent: '#5b7cff', backdrop: '#070a17' },
     pity: { minRarity: 'rare', within: 15 },
     contents: [
       { watchId: 'w_casio', weight: 90_000 },
@@ -78,7 +78,7 @@ export const BOXES: Box[] = [
     name: 'Emerald',
     tagline: 'Two in five land a crown.',
     priceCents: dollars(3_599),
-    theme: { body: '#0f3b2e', seam: '#e3c48a', accent: '#2fbf8a', backdrop: '#04130e' },
+    theme: { body: '#0f5a43', seam: '#e3c48a', accent: '#2fbf8a', backdrop: '#04130e' },
     pity: { minRarity: 'epic', within: 10 },
     contents: [
       { watchId: 'w_casio', weight: 60_000 },
@@ -92,7 +92,7 @@ export const BOXES: Box[] = [
     name: 'Gold Reserve',
     tagline: 'No quartz. Every box is a crown.',
     priceCents: dollars(9_499),
-    theme: { body: '#3a2a12', seam: '#f4d27a', accent: '#f0b93a', backdrop: '#140d03' },
+    theme: { body: '#6b4a1c', seam: '#f4d27a', accent: '#f0b93a', backdrop: '#140d03' },
     pity: { minRarity: 'legendary', within: 12 },
     contents: [
       { watchId: 'w_perpetual', weight: 55_000 },

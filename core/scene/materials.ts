@@ -1,5 +1,5 @@
 /* eslint-disable no-bitwise */
-import type { FilamentAsset, Float4, RenderableManager } from 'react-native-filament';
+import type { FilamentAsset, Float4, MaterialInstance, RenderableManager } from 'react-native-filament';
 
 /**
  * Material names inside designer-box.glb. Only body and seam accent are
@@ -27,6 +27,16 @@ export function paletteFromTheme(theme: { body: string; seam: string }): BoxPale
   return { body: hexToLinear(theme.body), seam: hexToLinear(theme.seam) };
 }
 
+/**
+ * react-native-filament 1.x declares `name` in its types, but the native side
+ * registers the getter as `getName`, so `material.name` is always undefined.
+ */
+function materialName(material: MaterialInstance): string | undefined {
+  'worklet';
+  const m = material as unknown as { name?: string; getName?: string };
+  return m.name ?? m.getName;
+}
+
 /** Walks every primitive and re-tints by material name. Runs on the Filament thread. */
 export function applyPalette(
   renderableManager: RenderableManager,
@@ -40,7 +50,7 @@ export function applyPalette(
     const count = renderableManager.getPrimitiveCount(entity);
     for (let i = 0; i < count; i++) {
       const material = renderableManager.getMaterialInstanceAt(entity, i);
-      const name = material.name;
+      const name = materialName(material);
       if (name === 'ShellRole_Body_Matte') {
         material.setFloat4Parameter('baseColorFactor', palette.body);
       } else if (name === 'ShellRole_SeamAccent_Accent') {
